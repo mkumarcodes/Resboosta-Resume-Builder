@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeBoosta</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- sound mate -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+
+
+
+<!-- GSAP for animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Howler.js for button sounds -->
+
+<script src="script.js"></script>
+
+  </head>
+<body class="bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] font-[Inter] text-white p-6">
+
+  <!-- Navi style mate -->
+
+ <div class="glass-container max-w-4xl mx-auto mt-8 p-8 rounded-3xl backdrop-blur-md bg-white/10 shadow-2xl space-y-8">
+
+    <!-- EmailJS Script -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+
+
+<div class="lux-heading">
+  <h1>AutoRES Generator</h1>
+</div>
+
+
+    <!-- Option A: Fetch Description from Job Title -->
+    <section>
+      <h2>Option A: Search Job Title</h2>
+      <input type="text" id="jobTitleInput" placeholder="e.g. Web Developer" />
+      <button onclick="handleJobTitle()"  class="bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] font-[Inter] text-white p-6 hover">Fetch Description</button>
+      <p id="jobDescriptionOutput"></p>
+
+    </section>
+
+    <hr />
+
+    <!-- Manual Job Posting Section -->
+    <section>
+      <h2>Option B: Enter Job Posting Manually</h2>
+
+      <label for="manualJobTitle">Position / Job Title:</label><br />
+      <input
+        type="text"
+        id="manualJobTitle"
+        placeholder="e.g. Administrative Assistant"
+      /><br />
+
+      <label for="manualExp">Your Experience (optional):</label>
+<select id="manualExp">
+  <option value="">-- Select Experience --</option>
+  <option value="1 year">1 year</option>
+  <option value="2 years">2 years</option>
+  <option value="3 years">3 years</option>
+  <option value="5+ years">5+ years</option>
+</select>
+
+
+      <label for="jobLocationInput">Location:</label><br />
+      <input
+        type="text"
+        id="jobLocationInput"
+        placeholder="e.g. Calgary, AB"
+      /><br /><br />
+
+      <label for="manualJobDescription">Job Description:</label><br />
+      <textarea
+        id="manualJobDescription"
+        placeholder="Paste or type the job description here..."
+        rows="10"
+        cols="60"
+      ></textarea>
+      <br />
+<!-- resume generate button -->
+      <button onclick="proceedToResume()" class="btnClick bg-purple-600 hover:bg-green-800 text-white py-2 px-4 rounded-lg shadow-lg transition duration-400">Generate Resume</button>
+
+    </section>
+
+   
+
+   
+
+<!-- resume containar -->
+
+<h2>🎯 ATS-Optimized Resume</h2>
+<HR>
+    <div id="resumePreview" class="resume">
+
+      <!-- Resume Display Section -->
+      <section id="resumeSection" style="display: none">
+      
+        
+            
+          <h1 id="resName">Your Name</h1>
+          <p id="resTitleLocation">[Job Title] • [Location]</p>
+
+          <h3>Professional Summary</h3>
+          <p id="resSummary">...</p>
+
+          <h3>Key Skills</h3>
+          <ul id="resSkills"></ul>
+
+          <h3>Experience</h3>
+          <div id="resExperience"></div>
+
+          <h3>Education</h3>
+          <p>Diploma-Computer Programming, Conestoga College, 2024</p>
+        </div>
+      </section>
+
+     
+
+
+    <!-- Finalize & Export Buttons -->
+<div class="glass-container bg-white/10 backdrop-blur-lg shadow-xl rounded-xl p-6">
+  <section id="step-5">
+    <h2>Finalize & Export Resume</h2>
+
+    <div class="button-group">
+      <button class="btnClick" onclick="copyResume()">📋 Copy Resume</button>
+      <button class="btnClick" onclick="downloadResume('txt')">⬇️ Download as .TXT</button>
+      <button class="btnClick" onclick="downloadResume('doc')">⬇️ Download as .DOC</button>
+      <button class="btnClick" onclick="DownloadPDF()">⬇️ Download as PDF</button>
+  </div>
+
+    <p id="exportStatus"></p>
+  </section>
+
+</div>
+
+
+
+</div>
+  </section>
+
+
+</div>
+
+
+
+    
+
+    <!-- style valo div patyo -->
+    </div>
+  </body>
+</html>
